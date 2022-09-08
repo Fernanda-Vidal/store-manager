@@ -1,4 +1,4 @@
-# Boas-vindas ao repositório do Projeto Store Manager!
+# Boas-vindas ao repositório do Projeto Store Manager
 
 Para realizar o projeto, atente-se a cada passo descrito a seguir, e se tiver qualquer dúvida, nos envie por _Slack_! #vqv 🚀
 
@@ -35,10 +35,7 @@ A API a ser construída é um sistema de gerenciamento de vendas no formato drop
 
 - Este projeto é individual
 - Serão `4` dias de projeto
-- Data de entrega para avaliação final do projeto: `DD/MM/YYYY 14:00h`
-
-      <br />
-
+- Data de entrega para avaliação final do projeto: `21/09/2022 14:00h`
   </details>
 
  <br />
@@ -84,8 +81,6 @@ A API a ser construída é um sistema de gerenciamento de vendas no formato drop
 
  <br />
 
-
-
 ### 👉 Sem Docker
 
 > :information_source: Instale as dependências [**Caso existam**] com `npm install`
@@ -97,6 +92,7 @@ A API a ser construída é um sistema de gerenciamento de vendas no formato drop
 - **:warning: Atenção:** A versão do `Node.js` e `NPM` a ser utilizada é `"node": ">=16.0.0"` e `"npm": ">=7.0.0"`, como descrito a chave `engines` no arquivo `package.json`. Idealmente deve-se utilizar o Node.js na `versão 16.14`, a versão na que esse projeto foi testado.
 
   <br/>
+
 </details>
 
 <details>
@@ -113,6 +109,7 @@ A API a ser construída é um sistema de gerenciamento de vendas no formato drop
   ![debugger_top_interface](public/debugger_top_interface.png)
 
   O simbolo 🔽 é uma caixa de seleção, como um `<select>` HTML, este abriga os modos de depuração que o VScode encontrou.
+
    1. Depurar Localmente
     - Executa sua API usando o `nodemon` e com o _debugger_ do VScode ativo. Você poderá acessar sua API normalmente, mas o código parará de executar nos _breakpoints_ que definir.
    2. Depurar com Docker
@@ -128,7 +125,7 @@ A API a ser construída é um sistema de gerenciamento de vendas no formato drop
 
   ![debugger controll bar](public/debugger_controll_bar.png)
 
-  Agora você consegue ativar os _breakpoints_ ⏺️ ao lado do número da linha, 
+  Agora você consegue ativar os _breakpoints_ ⏺️ ao lado do número da linha,
   ![debugger breakpoint](public/debugger_breakpoint.png)
   
   Quando clicar nele, este ficar vermelho e quando a API executar essa linha, ela vai parar.
@@ -137,19 +134,19 @@ A API a ser construída é um sistema de gerenciamento de vendas no formato drop
 
   ![debugger in action](public/debugger_in_action.png)
 
-  Note que todas a variáveis do escopo local (`_request`, `response`, `this`) de onde o cursor está podem ser inspecionadas. 
+  Note que todas a variáveis do escopo local (`_request`, `response`, `this`) de onde o cursor está podem ser inspecionadas.
   ![debugger variables](public/debugger_variables.png)
 
   Agora é com você! ✨
 
   Mas vou deixar aqui uma colinha de como funciona cada ícone da barra de depuração:
 
-  - ▶️ Continue: Vai exercutar o código até chegar no próximo _breakpoint_, dar um erro ou não haver mais o que executar;
-  - ⤵️ Step Over: Executa linha atual e pula para a próxima;
-  - ⬇️ Step Into: Entra dentro da função que vai ser executada na linha do cursor;
-  - ⬆️ Step Out: Saí da função que vai ser executada na linha do cursor, executando o resto dela;
-  - 🔄 Restart: Reinicia o processo de depuração, matando o processo atual e criando um novo.
-  - ⏹️ Stop: Para o processo de depuração, mata o processo.
+- ▶️ Continue: Vai exercutar o código até chegar no próximo _breakpoint_, dar um erro ou não haver mais o que executar;
+- ⤵️ Step Over: Executa linha atual e pula para a próxima;
+- ⬇️ Step Into: Entra dentro da função que vai ser executada na linha do cursor;
+- ⬆️ Step Out: Saí da função que vai ser executada na linha do cursor, executando o resto dela;
+- 🔄 Restart: Reinicia o processo de depuração, matando o processo atual e criando um novo.
+- ⏹️ Stop: Para o processo de depuração, mata o processo.
 
 > 💡 Anota a dica: talvez você tenha se perguntado: uai, mas não tem como voltar? Realmente não tem, é um processo que só vai na direção que o código executa. Logo, para "voltar uma linha" é preciso que ativemos o gatilho que faz o depurador passar por aquela linha que a gente quer voltar, fazendo uma nova requisição por exemplo.
 
@@ -209,12 +206,13 @@ A API a ser construída é um sistema de gerenciamento de vendas no formato drop
 - Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-021-a-store-manager-rubric/pulls) e confira que o seu _Pull Request_ está criado
 
   <br />
+
 </details>
 
 <details>
   <summary><strong>⌨️ Durante o desenvolvimento</strong></summary>
 
-#### :warning: PULL REQUESTS COM ISSUES NO LINTER NÃO SERÃO AVALIADAS, ATENTE-SE PARA RESOLVÊ-LAS ANTES DE FINALIZAR O DESENVOLVIMENTO!
+#### :warning: PULL REQUESTS COM ISSUES NO LINTER NÃO SERÃO AVALIADAS, ATENTE-SE PARA RESOLVÊ-LAS ANTES DE FINALIZAR O DESENVOLVIMENTO
 
 - Faça `commits` das alterações que você fizer no código regularmente
 
@@ -277,6 +275,7 @@ Para este projeto você pode rodar os testes das seguintes maneiras.
 - **:warning: Atenção:** lembre-se de que se estiver usando Docker, rodar esse comando dentro do container.
 
   <br />
+
 </details>
 
 <details>
@@ -330,10 +329,13 @@ Você pode também instalar o plugin do `ESLint` no `VSCode`, basta baixar o [pl
 
 - Em seus arquivos de `models`, `controllers` e `services`:
   - Sempre importe seus arquivos da seguinte forma:
+
   ```javascript
   const product = require("../services/product"); //como importar
   ```
+
   - :warning: **Não use desestruturação**, pois estas dão problemas nos `stubs` dos testes unitários com `sinon`;
+
   ```javascript
   const { getAll } = require("../services/product"); //como NÃO importar
   ```
@@ -418,6 +420,7 @@ Você pode também instalar o plugin do `ESLint` no `VSCode`, basta baixar o [pl
 - Para este projeto, é importante recorrer a leitura e fazer os exercícios do dia [Arquitetura de Software - Camada de Controller e Service](https://app.betrybe.com/course/back-end/nodejs-camada-de-servico-e-arquitetura-rest-e-restful/arquitetura-de-software-camada-de-controller-e-service/f8eeda7e-dd20-4a59-a0d9-3d4ec20729bc) _(Especialmente a seção `Bônus` > `Inserindo dados em mais de uma tabela`)_
 
   <br />
+
 </details>
 
 <details>
@@ -540,6 +543,7 @@ A tabela `sales_products`, é a tabela que faz o relacionamento `N:N` entre `pro
 - **✨ Dica:** Aqui como dica, é interessante começar a escrever seus testes de unidade pela camada de `models`. Outra dica é não escrever todos os testes de uma camada só de uma vez! Ex: Crie a função de listar todos os produtos, escreva o teste da camada de `models`, depois `service`, por último `controllers` e vai para a próxima função...
 
   <br />
+
 </details>
 
 <details>
@@ -630,6 +634,7 @@ Você sabia que o LinkedIn é a principal rede social profissional e compartilha
 - **[Será validado que a cobertura total das linhas dos arquivos de CADA camada `models`, `services` e `controllers` é maior ou igual a 5%. Ou seja, cada uma das camadas tem de ter, ao menos, 5% de cobertura de testes.]**
 
   <br>
+
 </details>
 
 ---
@@ -707,6 +712,7 @@ Você sabia que o LinkedIn é a principal rede social profissional e compartilha
 - **[Será validado que a cobertura total das linhas dos arquivos de CADA camada `models`, `services` e `controllers` é maior ou igual a 10%. Ou seja, cada uma das camadas tem de ter, ao menos, 10% de cobertura de testes.]**
 
   <br>
+
 </details>
 
 ---
@@ -814,6 +820,7 @@ Você sabia que o LinkedIn é a principal rede social profissional e compartilha
 - **[Será validado que a cobertura total das linhas dos arquivos de CADA camada `models`, `services` e `controllers` é maior ou igual a 15%. Ou seja, cada uma das camadas tem de ter, ao menos, 15% de cobertura de testes.]**
 
   <br>
+
 </details>
 
 ---
@@ -898,6 +905,7 @@ Você sabia que o LinkedIn é a principal rede social profissional e compartilha
 - **[Será validado que a cobertura total das linhas dos arquivos de CADA camada `models`, `services` e `controllers` é maior ou igual a 20%. Ou seja, cada uma das camadas tem de ter, ao menos, 20% de cobertura de testes.]**
 
   <br>
+
 </details>
 
 ---
@@ -918,8 +926,9 @@ Você sabia que o LinkedIn é a principal rede social profissional e compartilha
 <details close>
   <summary>Os seguintes pontos serão avaliados</summary>
   
-  - **[Será validado que não é possível alterar um produto que não existe]**
-    - Se o produto for inexistente o resultado retornado deverá ser conforme exibido abaixo, com um status http `404`:
+- **[Será validado que não é possível alterar um produto que não existe]**
+  - Se o produto for inexistente o resultado retornado deverá ser conforme exibido abaixo, com um status http `404`:
+
     ```json
       { "message": "Product not found" }
     ```
@@ -953,6 +962,7 @@ Você sabia que o LinkedIn é a principal rede social profissional e compartilha
 - **[Será validado que a cobertura total das linhas dos arquivos de CADA camada `models`, `services` e `controllers` é maior ou igual a 25%. Ou seja, cada uma das camadas tem de ter, ao menos, 25% de cobertura de testes.]**
 
   <br>
+
 </details>
 
 ---
@@ -965,8 +975,9 @@ Você sabia que o LinkedIn é a principal rede social profissional e compartilha
 <details close>
   <summary>Os seguintes pontos serão avaliados</summary>
   
-  - **[Será validado que não é possível deletar um produto que não existe]**
-    - Se o produto for inexistente o resultado retornado deverá ser conforme exibido abaixo, com um status http `404`:
+- **[Será validado que não é possível deletar um produto que não existe]**
+  - Se o produto for inexistente o resultado retornado deverá ser conforme exibido abaixo, com um status http `404`:
+
     ```json
       { "message": "Product not found" }
     ```
@@ -997,6 +1008,7 @@ Você sabia que o LinkedIn é a principal rede social profissional e compartilha
 - **[Será validado que a cobertura total das linhas dos arquivos de CADA camada `models`, `services` e `controllers` é maior ou igual a 30%. Ou seja, cada uma das camadas tem de ter, ao menos, 30% de cobertura de testes.]**
 
   <br>
+
 </details>
 
 ---
@@ -1009,8 +1021,9 @@ Você sabia que o LinkedIn é a principal rede social profissional e compartilha
 <details close>
   <summary>Os seguintes pontos serão avaliados</summary>
   
-  - **[Será validado que não é possível deletar uma venda que não existe]**
-    - Se a venda for inexistente o resultado retornado deverá ser conforme exibido abaixo, com um status http `404`:
+- **[Será validado que não é possível deletar uma venda que não existe]**
+  - Se a venda for inexistente o resultado retornado deverá ser conforme exibido abaixo, com um status http `404`:
+
     ```json
       { "message": "Sale not found" }
     ```
@@ -1039,6 +1052,7 @@ Você sabia que o LinkedIn é a principal rede social profissional e compartilha
 - **[Será validado que a cobertura total das linhas dos arquivos de CADA camada `models`, `services` e `controllers` é maior ou igual a 35%. Ou seja, cada uma das camadas tem de ter, ao menos, 35% de cobertura de testes.]**
 
   <br>
+
 </details>
 
 ---
@@ -1066,8 +1080,9 @@ Você sabia que o LinkedIn é a principal rede social profissional e compartilha
 <details close>
   <summary>Os seguintes pontos serão avaliados</summary>
   
-  - **[Será validado que não é possível alterar uma venda que não existe]**
-    - Se a venda for inexistente o resultado retornado deverá ser conforme exibido abaixo, com um status http `404`:
+- **[Será validado que não é possível alterar uma venda que não existe]**
+  - Se a venda for inexistente o resultado retornado deverá ser conforme exibido abaixo, com um status http `404`:
+
     ```json
       { "message": "Sale not found" }
     ```
@@ -1108,6 +1123,7 @@ Você sabia que o LinkedIn é a principal rede social profissional e compartilha
 - **[Será validado que a cobertura total das linhas dos arquivos de CADA camada `models`, `services` e `controllers` é maior ou igual a 40%. Ou seja, cada uma das camadas tem de ter, ao menos, 40% de cobertura de testes.]**
 
   <br>
+
 </details>
 
 ---
@@ -1119,6 +1135,7 @@ Você sabia que o LinkedIn é a principal rede social profissional e compartilha
 - Sua aplicação deve ser capaz de retornar um array de produtos que contenham em seu nome termo passado na URL;
 - Sua aplicação deve ser capaz de retornar um array vázio caso nenhum nome satisfaça a busca;
 - O query params da requisição deverá seguir o formato abaixo:
+
   ```js
     http://localhost:PORT/products/search?q=Martelo
   ```
@@ -1177,6 +1194,7 @@ Você sabia que o LinkedIn é a principal rede social profissional e compartilha
 - **[Será validado que a cobertura total das linhas dos arquivos de CADA camada `models`, `services` e `controllers` é maior ou igual a 50%. Ou seja, cada uma das camadas tem de ter, ao menos, 50% de cobertura de testes.]**
 
   <br>
+
 </details>
 
 ---
@@ -1194,4 +1212,5 @@ Você sabia que o LinkedIn é a principal rede social profissional e compartilha
 - **[Será validado que a cobertura total das linhas dos arquivos de CADA camada `models`, `services` e `controllers` é maior ou igual a 60%. Ou seja, cada uma das camadas tem de ter, ao menos, 60% de cobertura de testes.]**
 
   <br>
+
 </details>
