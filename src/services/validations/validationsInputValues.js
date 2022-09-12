@@ -7,8 +7,8 @@ const isProduct = async (productId) => {
   return false;
 };
 
-const validateProductSchema = async (productId) => {
-  const { error } = validation.addRequestProductSchema.validate({ productId });
+const validateIdSchema = async (productId) => {
+  const { error } = validation.addRequestIdSchema.validate({ productId });
   if (error) return { type: 'INVALID_VALUE', message: error.message };
   
   const product = await isProduct(productId);
@@ -18,6 +18,14 @@ const validateProductSchema = async (productId) => {
   return { type: null, message: '' };
 };
 
+const validateProductSchema = async (productName) => {
+  const { error } = validation.addRequestProductSchema.validate({ productName });
+  if (error) return { type: 'INVALID_VALUE', message: error.message };
+
+  return { type: null, message: '' };
+};
+
 module.exports = {
+  validateIdSchema,
   validateProductSchema,
 };

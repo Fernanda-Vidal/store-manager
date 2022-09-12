@@ -17,7 +17,18 @@ const getProductById = async (req, res) => {
   res.status(200).json(message);
 };
 
+const createProduct = async (req, res) => {
+  const { name } = req.body;
+
+  const { type, message } = await service.productService.addProduct(name);
+  
+  if (type !== null) return res.status(404).json({ message: 'Invalid Name' });
+
+  res.status(201).json({ id: message, name });
+};
+
 module.exports = {
   getProduct,
   getProductById,
+  createProduct,
 };

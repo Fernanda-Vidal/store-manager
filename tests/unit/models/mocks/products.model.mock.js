@@ -11,6 +11,10 @@ const products = [
     id: 3,
     name: 'Escudo do Capitão América',
   },
+  {
+    id: 4,
+    name: 'Um Anel',
+  }
 ];
 
 module.exports = {

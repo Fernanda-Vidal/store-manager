@@ -8,9 +8,7 @@ const getAllProducts = async () => {
 };
 
 const getProductById = async (productId) => {
-  const validateId = await schema.validateProductSchema(
-    productId,
-  );
+  const validateId = await schema.validateIdSchema(productId);
 
   if (validateId.type) return validateId.message;
   
@@ -18,7 +16,17 @@ const getProductById = async (productId) => {
   return { type: null, message: product };
 };
 
+const addProduct = async (productName) => {
+  const validateProduct = await schema.validateProductSchema(productName);
+
+  if (validateProduct.type) return validateProduct.message;
+
+  const productId = await model.productModel.insert(productName);
+  return { type: null, message: productId };
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
+  addProduct,
 };
