@@ -22,7 +22,9 @@ const createProduct = async (req, res) => {
 
   const { type, message } = await service.productService.addProduct(name);
   
-  if (type !== null) return res.status(404).json({ message: 'Invalid Name' });
+  if (type !== null) {
+    return res.status(422).json({ message: '"name" length must be at least 5 characters long' });
+  }
 
   res.status(201).json({ id: message, name });
 };
