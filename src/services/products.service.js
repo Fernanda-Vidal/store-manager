@@ -8,11 +8,11 @@ const getAllProducts = async () => {
 };
 
 const getProductById = async (productId) => {
-  const validateId = schema.validateProductSchema(
+  const validateId = await schema.validateProductSchema(
     productId,
   );
 
-  if (validateId.type) return validateId;
+  if (validateId.type) return validateId.message;
   
   const product = await model.productModel.findById(productId);
   return { type: null, message: product };

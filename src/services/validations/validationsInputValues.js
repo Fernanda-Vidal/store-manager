@@ -7,11 +7,13 @@ const isProduct = async (productId) => {
   return false;
 };
 
-const validateProductSchema = (productId) => {
+const validateProductSchema = async (productId) => {
   const { error } = validation.addRequestProductSchema.validate({ productId });
   if (error) return { type: 'INVALID_VALUE', message: error.message };
   
-  if (!isProduct(productId)) return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
+  const product = await isProduct(productId);
+
+  if (!product) return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
 
   return { type: null, message: '' };
 };
