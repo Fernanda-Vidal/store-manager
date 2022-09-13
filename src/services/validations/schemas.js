@@ -1,17 +1,22 @@
 const Joi = require('joi');
 
-const idSchema = Joi.number().integer().min(1).required();
+const numberSchema = Joi.number().integer().min(1).required();
 const productSchema = Joi.string().min(5).required();
 
 const addRequestIdSchema = Joi.object({
-  productId: idSchema,
+  productId: numberSchema,
 });
 
 const addRequestProductSchema = Joi.object({
   productName: productSchema,
 });
 
+const addRequestNumberSchema = Joi.object({
+  quantity: numberSchema,
+});
+
 module.exports = {
   addRequestIdSchema,
   addRequestProductSchema,
+  addRequestNumberSchema,
 };

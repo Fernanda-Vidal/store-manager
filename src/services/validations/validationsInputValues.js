@@ -13,8 +13,8 @@ const validateIdSchema = async (productId) => {
   
   const product = await isProduct(productId);
 
-  if (!product) return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
-
+  if (!product) return { type: 'PRODUCT_NOT_FOUND', message: '"productId" not found' };
+  console.log('product', product);
   return { type: null, message: '' };
 };
 
