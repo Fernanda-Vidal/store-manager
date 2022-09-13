@@ -15,8 +15,13 @@ const addRequestNumberSchema = Joi.object({
   quantity: numberSchema,
 });
 
+const addRequestIdSale = Joi.object({
+  saleId: numberSchema,
+});
+
 module.exports = {
   addRequestIdSchema,
   addRequestProductSchema,
   addRequestNumberSchema,
+  addRequestIdSale,
 };

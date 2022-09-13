@@ -59,6 +59,7 @@ describe("08 - Crie endpoints para listar vendas", () => {
     expect(json[0]).toHaveProperty("quantity");
     expect(json[0]).toHaveProperty("date");
 
+    
     expect(json[0].productId).toEqual(1);
     expect(json[0].quantity).toEqual(5);
     expect(json[0].date).toBeDefined();

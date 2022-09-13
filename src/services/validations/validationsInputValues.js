@@ -7,6 +7,13 @@ const isProduct = async (productId) => {
   return false;
 };
 
+const isSale = async (saleId) => {
+  const sale = await model.salesModel.findById(saleId);
+  console.log('isSale', sale);
+  if (sale) return true;
+  return false;
+};
+
 const validateIdSchema = async (productId) => {
   const { error } = validation.addRequestIdSchema.validate({ productId });
   if (error) return { type: 'INVALID_VALUE', message: error.message };
@@ -14,7 +21,7 @@ const validateIdSchema = async (productId) => {
   const product = await isProduct(productId);
 
   if (!product) return { type: 'PRODUCT_NOT_FOUND', message: '"productId" not found' };
-  console.log('product', product);
+
   return { type: null, message: '' };
 };
 
@@ -25,7 +32,19 @@ const validateProductSchema = async (productName) => {
   return { type: null, message: '' };
 };
 
+const validateSaleSchema = async (saleId) => {
+  const { error } = validation.addRequestIdSale.validate({ saleId });
+  if (error) return { type: 'INVALID_VALUE', message: error.message };
+
+  const sale = await isSale(saleId);
+  if (!sale) return { type: 'SALE_NOT_FOUND', message: '"saleId" not found' };
+
+  return { type: null, message: '' };
+};
+
 module.exports = {
   validateIdSchema,
   validateProductSchema,
+  isProduct,
+  validateSaleSchema,
 };
