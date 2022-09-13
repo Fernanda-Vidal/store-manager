@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/', controller.salesController.callSales);
 
-router.get('/:saleId', controller.salesController.callSaleById);
+router.get('/:id', controller.salesController.callSaleById);
 
 router.post('/',
   middleware.sales.validateFieldsSales,

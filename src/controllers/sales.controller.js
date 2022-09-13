@@ -19,9 +19,9 @@ const callSales = async (_req, res) => {
 };
 
 const callSaleById = async (req, res) => {
-  const { saleId } = req.params;
+  const { id } = req.params;
   
-  const { type, message } = await service.saleService.getSaleById(saleId);
+  const { type, message } = await service.saleService.getSaleById(id);
   console.log('controller', message);
 
   if (type !== null) return res.status(404).json({ message: 'Sale not found' });
