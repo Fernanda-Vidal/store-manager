@@ -1,10 +1,10 @@
 const model = require('../models');
-const schema = require('./validations/validationsInputValues');
+// const schema = require('./validations/validationsInputValues');
 
 const addSale = async (objectSale) => {
   const qtValid = objectSale.every(({ quantity }) => quantity > 0);
   // Verificar isso.
-  const aaa = await (await Promise.all(objectSale.map(({ productId }) => schema.isProduct(productId)))).every((item) => item === true);
+  // const aaa = await (await Promise.all(objectSale.map(({ productId }) => schema.isProduct(productId)))).every((item) => item === true);
 
   if (qtValid) {
     // const sale = await model.salesModel.insertSale();
