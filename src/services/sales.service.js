@@ -18,7 +18,7 @@ const addSale = async (objectSale) => {
     return addDb;
   }));
   
-  return { type: null, message: { id: sale, itemsSold: [...objectSale] } };
+  return { type: null, message: '' };
 };
 
 const getAllSales = async () => {
@@ -48,9 +48,31 @@ const deleteSale = async (saleId) => {
   return { type: null, message: '' };
 };
 
+const updateSale = async (saleId, objectSale) => {
+  const sale = await model.salesModel.findById(saleId);
+  if (sale.length === 0) return { type: 'SALE_NOT_FOUND', message: 'Sale not found' };
+
+  const qtValid = objectSale.every(({ quantity }) => quantity > 0);
+  if (!qtValid) {
+    return { type: 'INVALID_VALUE', message: '"quantity" must be greater than or equal to 1' };
+  }
+
+  const idExist = await (await Promise.all(objectSale
+    .map(({ productId }) => schema.isProduct(productId)))).every((item) => item === true);
+  if (!idExist) return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
+
+  await Promise.all(objectSale.map(({ productId, quantity }) => {
+    const updateDB = model.salesModel.update(saleId, productId, quantity);
+    return updateDB;
+  }));
+
+  return { type: null, message: { saleId, itemsUpdate: [...objectSale] } };
+};
+
 module.exports = {
   addSale,
   getAllSales,
   getSaleById,
   deleteSale,
+  updateSale,
 };

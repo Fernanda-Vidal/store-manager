@@ -1,4 +1,7 @@
-const products = [
+const products = {
+  type: null,
+  message:
+  [
   {
     id: 1,
     name: 'Martelo de Thor',
@@ -11,7 +14,7 @@ const products = [
     id: 3,
     name: 'Escudo do Capitão América',
   },
-];
+]};
 
 module.exports = {
   products,

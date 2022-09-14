@@ -14,4 +14,8 @@ router.post('/',
 
 router.delete('/:saleId', controller.salesController.callDeleteSales);
 
+router.put('/:saleId',
+  middleware.sales.validateFieldsSales,
+  controller.salesController.callUpdateSale);
+
 module.exports = router;

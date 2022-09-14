@@ -22,7 +22,6 @@ const callSaleById = async (req, res) => {
   const { saleId } = req.params;
   
   const { type, message } = await service.saleService.getSaleById(saleId);
-  console.log('controller', message);
 
   if (type !== null) return res.status(404).json({ message: 'Sale not found' });
 
@@ -38,9 +37,20 @@ const callDeleteSales = async (req, res) => {
   res.status(204).json();
 };
 
+const callUpdateSale = async (req, res) => {
+  const { saleId } = req.params;
+  const sale = req.body;
+
+  const { type, message } = await service.saleService.updateSale(saleId, sale);
+  if (type) return res.status(errorMap.mapError(type)).json({ message });
+
+  res.status(200).json({ saleId, itemsUpdated: [...sale] });
+};
+
 module.exports = {
   createSale,
   callSales,
   callSaleById,
   callDeleteSales,
+  callUpdateSale,
 };
