@@ -18,7 +18,7 @@ const addSale = async (objectSale) => {
     return addDb;
   }));
   
-  return { type: null, message: '' };
+  return { type: null, message: { id: sale, itemsSold: [...objectSale] } };
 };
 
 const getAllSales = async () => {
@@ -66,7 +66,7 @@ const updateSale = async (saleId, objectSale) => {
     return updateDB;
   }));
 
-  return { type: null, message: { saleId, itemsUpdate: [...objectSale] } };
+  return { type: null, message: '' };
 };
 
 module.exports = {
