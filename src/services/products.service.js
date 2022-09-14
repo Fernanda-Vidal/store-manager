@@ -34,9 +34,18 @@ const updateProduct = async (productName, productId) => {
   return { type: null, message: '' };
 };
 
+const deleteProduct = async (productId) => {
+  const { type } = await schema.validateIdProduct(productId);
+  if (type !== null) return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
+
+  await model.productModel.deleteProductById(productId);
+  return { type: null, message: '' };
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
   addProduct,
   updateProduct,
+  deleteProduct,
 };

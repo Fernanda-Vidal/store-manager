@@ -18,4 +18,7 @@ router.put('/:productId',
   middleware.name.validateName,
   controller.productController.callUpdateProduct);
 
+router.delete('/:productId',
+  controller.productController.callDeleteProduct);
+
 module.exports = router;
