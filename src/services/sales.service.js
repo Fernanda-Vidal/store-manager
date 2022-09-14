@@ -1,20 +1,22 @@
 const model = require('../models');
-// const schema = require('./validations/validationsInputValues');
+const schema = require('./validations/validationsInputValues');
 
 const addSale = async (objectSale) => {
   const qtValid = objectSale.every(({ quantity }) => quantity > 0);
-  // Verificar isso.
-  // const aaa = await (await Promise.all(objectSale.map(({ productId }) => schema.isProduct(productId)))).every((item) => item === true);
+  const idExist = await (await Promise.all(objectSale
+    .map(({ productId }) => schema.isProduct(productId)))).every((item) => item === true);
 
-  if (qtValid) {
-    // const sale = await model.salesModel.insertSale();
-    // await Promise.all(objectSale.map(({ productId, quantity }) => {
-
-    // return { type: null, message: { id: sale, itemsSold: [...objectSale] } };
-  } 
-  return {
-    type: 'INVALID_VALUE', message: '"quantity" must be greater than or equal to 1',
-  };
+  if (!qtValid) {
+    return { type: 'INVALID_VALUE', message: '"quantity" must be greater than or equal to 1' };
+  }
+  if (!idExist) return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
+ 
+  const sale = await model.salesModel.insertSale();
+  await Promise.all(objectSale.map(({ productId, quantity }) => {
+    const addDb = model.salesModel.insertSalesProduct(productId, quantity, sale);
+    return addDb;
+  }));
+  return { type: null, message: { id: sale, itemsSold: [...objectSale] } };
 };
 
 const getAllSales = async () => {
@@ -24,10 +26,6 @@ const getAllSales = async () => {
 };
 
 const getSaleById = async (saleId) => {
-  // const validateId = await schema.validateSaleSchema(saleId);
-  // console.log('validateId', validateId);
-  // if (validateId.type !== null) return validateId;
-
   const sale = await model.salesModel.findById(saleId);
   
   if (sale.length === 0) {

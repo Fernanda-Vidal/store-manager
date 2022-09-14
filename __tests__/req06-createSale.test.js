@@ -60,7 +60,7 @@ describe("06 - Crie endpoint para validar e cadastrar vendas", () => {
     expect(json.message).toEqual("Product not found");
   });
 
-  it.only("Será validado que é possível cadastrar uma venda com sucesso", async () => {
+  it("Será validado que é possível cadastrar uma venda com sucesso", async () => {
     const { status, json } = await frisby.post(`${url}/sales`, rightSaleBody);
     const [rows] = await connect().execute(
       "SELECT * FROM StoreManager.sales_products WHERE sale_id = ?",
