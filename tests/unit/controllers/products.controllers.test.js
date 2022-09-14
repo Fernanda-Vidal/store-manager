@@ -5,12 +5,13 @@ const sinonChai = require('sinon-chai');
 const { expect } = chai;
 chai.use(sinonChai);
 
-const { productService } = require('../../../src/services');
+const productService = require('../../../src/services/products.service');
 const productControllers = require('../../../src/controllers/products.controller');
 
-const products = require('./mocks/products.controllers.mock');
+const { products } = require('./mocks/products.controllers.mock');
 
 describe('Testes de unidade do controller de produtos', function () {
+  afterEach(sinon.restore);
   it('Testa a rota /products', async function () {
     const res = {};
     const req = {};
@@ -27,7 +28,7 @@ describe('Testes de unidade do controller de produtos', function () {
 
   it('Testa a rota /products/:productId', async function () {
     const res = {};
-    const req = 1;
+    const req = { params: { productId: 1 } };
 
     res.status = sinon.stub().returns(res);
     res.json = sinon.stub().returns();
@@ -36,6 +37,6 @@ describe('Testes de unidade do controller de produtos', function () {
 
     await productControllers.getProductById(req, res);
 
-    expect(res.status).to.have.been.calledWith(200);
+    expect(res.status).to.be.been.calledWith(200);
   })
 })
