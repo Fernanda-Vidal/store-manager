@@ -46,7 +46,6 @@ const findById = async (saleId) => {
     ORDER BY sale_id, product_id`,
     [saleId],
   );
-  console.log('model', result);
 
   return result;
 };

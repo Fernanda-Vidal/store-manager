@@ -14,4 +14,8 @@ router.post('/',
   middleware.name.validateName,
   controller.productController.createProduct);
 
+router.put('/:productId',
+  middleware.name.validateName,
+  controller.productController.callUpdateProduct);
+
 module.exports = router;

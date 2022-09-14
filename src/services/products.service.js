@@ -25,8 +25,18 @@ const addProduct = async (productName) => {
   return { type: null, message: productId };
 };
 
+const updateProduct = async (productName, productId) => {
+  const { type } = await schema.validateIdProduct(productId);
+
+  if (type !== null) return { type: 'PRODUCT_NOT_FOUND', message: 'Product not found' };
+
+  await model.productModel.update(productId, productName);
+  return { type: null, message: '' };
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
   addProduct,
+  updateProduct,
 };
