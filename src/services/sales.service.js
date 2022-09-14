@@ -31,16 +31,26 @@ const getSaleById = async (saleId) => {
   const sale = await model.salesModel.findById(saleId);
   
   if (sale.length === 0) {
-    console.log({ type: 404, message: '"saleId" not exist' });
     return { type: 404, message: '"saleId" not exist' };
   }
 
-  console.log('service', sale.length);
   return { type: null, message: sale };
+};
+
+const deleteSale = async (saleId) => {
+  const sale = await model.salesModel.findById(saleId);
+
+  if (sale.length === 0) {
+    return { type: 'SALE_NOT_FOUND', message: 'Sale not found' };
+  }
+
+  await model.salesModel.deleteSaleById(saleId);
+  return { type: null, message: '' };
 };
 
 module.exports = {
   addSale,
   getAllSales,
   getSaleById,
+  deleteSale,
 };

@@ -6,10 +6,12 @@ const router = express.Router();
 
 router.get('/', controller.salesController.callSales);
 
-router.get('/:id', controller.salesController.callSaleById);
+router.get('/:saleId', controller.salesController.callSaleById);
 
 router.post('/',
   middleware.sales.validateFieldsSales,
   controller.salesController.createSale);
+
+router.delete('/:saleId', controller.salesController.callDeleteSales);
 
 module.exports = router;

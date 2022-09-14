@@ -50,9 +50,15 @@ const findById = async (saleId) => {
   return result;
 };
 
+const deleteSaleById = async (saleId) => connection.execute(
+  `DELETE FROM StoreManager.sales
+  WHERE id = ?`, [saleId],
+);
+
 module.exports = {
   insertSale,
   insertSalesProduct,
   findAll,
   findById,
+  deleteSaleById,
 };
