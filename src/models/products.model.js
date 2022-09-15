@@ -38,10 +38,21 @@ const deleteProductById = async (productId) => connection.execute(
   WHERE id = ?`, [productId],
 );
 
+// Pesquisa em: https://www.php.net/manual/en/pdo.prepared-statements.php
+const searchProducts = async (q) => {
+  const [product] = await connection.execute(
+    `SELECT * FROM StoreManager.products
+    WHERE (name) LIKE (?)`, [`%${q}%`],
+  );
+
+  return product;
+};
+
 module.exports = {
   findAll,
   findById,
   insert,
   update,
   deleteProductById,
+  searchProducts,
 };
