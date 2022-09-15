@@ -36,8 +36,6 @@ const callUpdateProduct = async (req, res) => {
   const { type, message } = await service.productService.updateProduct(name, productId);
   if (type) return res.status(errorMap.mapError(type)).json({ message });
 
-  console.log('message', message);
-
   return res.status(200).json({ id: productId, name });
 };
 

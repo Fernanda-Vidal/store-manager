@@ -7,6 +7,7 @@ const productModel = require('../../../src/models/products.model');
 const { products } = require('./mocks/products.model.mock');
 
 describe('Testes de unidade do model', function () {
+  afterEach(sinon.restore);
   it('Testa a rota /products', async function () {
     sinon.stub(connection, 'execute').resolves([products]);
 
@@ -28,6 +29,5 @@ describe('Testes de unidade do model', function () {
     expect(result).to.equal(4);
   })
 
-  afterEach(sinon.restore);
 })
 
